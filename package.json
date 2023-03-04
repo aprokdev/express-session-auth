@@ -1,0 +1,35 @@
+{
+  "name": "express-auth",
+  "version": "1.0.0",
+  "description": "practice with express.js authentication",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aprokdev/express-auth.git"
+  },
+  "keywords": [
+    "express",
+    "auth"
+  ],
+  "author": "Anton Prokopenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aprokdev/express-auth/issues"
+  },
+  "homepage": "https://github.com/aprokdev/express-auth#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-mysql-session": "^2.1.8",
+    "express-session": "^1.17.3",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.21"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.4"
+  },
+  "type": "commonjs"
+}
