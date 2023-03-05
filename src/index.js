@@ -32,7 +32,7 @@ app.use(
     session({
         secret: process.env.SESSION_SECRET,
         resave: false,
-        saveUninitialized: true,
+        saveUninitialized: false, // to crete session only on auth
         store: sessionStore,
         cookie: {
             maxAge: 1000 * 60 * 60 * 24, // 1 day
@@ -47,4 +47,4 @@ app.use(passport.session());
 
 app.use(routes);
 
-app.listen(8000, () => console.log('Server started at port: 8000'));
+app.listen(3000, () => console.log('Server started at port: 3000'));

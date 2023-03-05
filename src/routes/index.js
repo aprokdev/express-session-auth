@@ -49,7 +49,6 @@ router.get('/', (req, res, next) => {
     );
 });
 
-// When you visit http://localhost:3000/login, you will see "Login Page"
 router.get('/login', (req, res, next) => {
     const { email, password } = req.query;
     const form = `
@@ -66,7 +65,6 @@ router.get('/login', (req, res, next) => {
     res.send(form);
 });
 
-// When you visit http://localhost:3000/register, you will see "Register Page"
 router.get('/register', (req, res, next) => {
     const form = `${header}<h1>Register Page</h1>
         <form method="post" action="register">\<br>
@@ -84,14 +82,8 @@ router.get('/register', (req, res, next) => {
     res.send(form);
 });
 
-/**
- * Lookup how to authenticate users on routes with Local Strategy
- * Google Search: "How to use Express Passport Local Strategy"
- *
- * Also, look up what behaviour express session has without a maxage set
- */
 router.get('/protected-route', (req, res, next) => {
-    // This is how you check if a user is authenticated and protect a route.  You could turn this into a custom middleware to make it less redundant
+    // This is how you check if a user is authenticated and protect a route.
     if (req.isAuthenticated()) {
         res.send(
             header + '<h1>You are authenticated</h1><p><a href="/logout">Logout and reload</a></p>'
@@ -101,7 +93,6 @@ router.get('/protected-route', (req, res, next) => {
     }
 });
 
-// Visiting this route logs the user out
 router.get('/logout', (req, res, next) => {
     req.logout(null, (err) => err);
     res.redirect('/protected-route');
