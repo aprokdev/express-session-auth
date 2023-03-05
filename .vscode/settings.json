@@ -22,8 +22,8 @@
         "server": "localhost",
         "port": 3306,
         "driver": "MySQL",
-        "name": "posteverydayDB",
-        "database": "posteveryday",
+        "name": "session_test",
+        "database": "session_test",
         "username": "root",
         "password": "9001"
       }
