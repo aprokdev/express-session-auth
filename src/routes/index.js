@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const prisma = require('../../config/database');
 const passport = require('passport');
+const { genPassword } = require('../utils');
 
 const header = `
     <header style="display: flex">
@@ -20,13 +21,18 @@ router.post(
 
 router.post('/register', async (req, res, next) => {
     const { email, first_name, last_name, password } = req.body;
+    const saltHash = genPassword(password);
+
+    const salt = saltHash.salt;
+    const hash = saltHash.hash;
     try {
         const user = await prisma.user.create({
             data: {
                 email,
                 first_name,
                 last_name,
-                password,
+                hash,
+                salt,
             },
         });
         if (user) {
@@ -56,7 +62,7 @@ router.get('/login', (req, res, next) => {
         <h1>Login Page</h1>
         <form method="POST" action="/login">\
             Enter Email:<br>
-            <input type="email" name="username" value="${email || ''}">\<br>
+            <input type="email" name="email" value="${email || ''}">\<br>
             Enter Password:<br>
             <input type="password" name="password" value="${password || ''}">\<br><br>
             <button type="submit">Submit</button>
